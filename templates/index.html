@@ -16,7 +16,11 @@
     <ul>
         {% for task in tasks %}
             <li>
-                {{task.nome, task.descricao}}
+                <form action="/update/{{task.id}}" method="POST" style="display: inline;">
+                    <input type="text" name="nome" value="{{task.nome}}">
+                    <input type="text" name="descricao" value="{{task.descricao}}">
+                    <button type="submit">Atualizar</button>
+                </form>
                 <form action="/delete/{{task.id}}" method="POST" style="display: inline;">
                     <button type="submit">Deletar tarefa</button>
                 </form>
