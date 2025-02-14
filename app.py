@@ -36,6 +36,18 @@ def delete_tarefa(tarefa_id):
         db.session.commit()
     return redirect('/')
     
+# update 
+@app.route('/update/<int:tarefa_id>', methods=['POST'])
+def update_tarefa(tarefa_id):
+    task = Tarefas.query.get(tarefa_id)
+
+    if task:
+        task.nome = request.form['nome']
+        task.descricao = request.form['descricao']
+        db.session.commit()
+    return redirect('/')
+
+
 
 if __name__ == '__main__':
     with app.app_context():
