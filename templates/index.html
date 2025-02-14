@@ -15,7 +15,12 @@
     <h1>Lista de tarefas</h1>
     <ul>
         {% for task in tasks %}
-            <li>{{task.nome, task.descricao}}</li>
+            <li>
+                {{task.nome, task.descricao}}
+                <form action="/delete/{{task.id}}" method="POST" style="display: inline;">
+                    <button type="submit">Deletar tarefa</button>
+                </form>
+            </li>
         {% endfor %}
     </ul>
 </body>
