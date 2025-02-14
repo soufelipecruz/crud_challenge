@@ -4,11 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DTo-Do List</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        body{
+            font-family: Poppins;
+            width: 100vw;
+            height: 100vh;
+            background-color: #1a0b10;
+            color: #d5df00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        ul{
+            list-style: none;
+        }
+    </style>
 </head>
 <body>
     <h1>Adicionar nova tarefa</h1>
     <form action="/create" method="POST">
+        <label for="nome">Nome da tarefa:</label>
         <input type="text" name="nome" required>
+        <label for="descricao">Descrição da tarefa:</label>
         <input type="text" name="descricao" required>
         <button type="submit">Criar tarefa</button>
     </form>
@@ -17,14 +36,16 @@
         {% for task in tasks %}
             <li>
                 <form action="/update/{{task.id}}" method="POST" style="display: inline;">
+                    <label for="nome">Nome da tarefa:</label>
                     <input type="text" name="nome" value="{{task.nome}}">
+                    <label for="descricao">Descrição da tarefa:</label>
                     <input type="text" name="descricao" value="{{task.descricao}}">
                     <button type="submit">Atualizar</button>
                 </form>
                 <form action="/delete/{{task.id}}" method="POST" style="display: inline;">
                     <button type="submit">Deletar tarefa</button>
                 </form>
-            </li>
+            </li> <br>
         {% endfor %}
     </ul>
 </body>
